@@ -47,6 +47,7 @@ The above disclaimer **MUST** **NOT** be removed. This line **MUST** **NOT** be 
 10. [Automated Performance Testing](#10-automated-performance-testing)
   1. [jMeter load testing](#101-jmeter-load-testing)
 11. [User Acceptance Testing (UAT)](#11-user-acceptance-testing-uat)
+12. [Refactoring for testability](#12-refactor-for-testability)
 
 ## 1. Upstream QA
 
@@ -144,6 +145,7 @@ As PSR-2 is going to be adopted by the Consortium as the de facto standard for a
 * **ALL** new and refactored code **MUST** adhere to decided-upon JavaScript standard.
 * **TODO**: Decide on JavaScript coding style standards.
 * **TODO**: Add CI task to send warning to developers if code is non-compliant, but don't fail the build.
+* **TODO**: Run jshint or another linter on all javascript files.
 
 ## 5. Automated Unit Testing
 
@@ -227,6 +229,9 @@ and parse the output for `^\s*Lines:\s*\d+.\d+\%`.
 
 * **Status**: There are NO JavaScript unit tests!
 * **ALL** JavaScript tests (none at the moment) **MUST** pass before upstream and/or downstream merge and/or release.
+* It is recommended that javascript code is loaded as separate files, rather than embedded in the html code. The preferred location for the linked scripts is in the page HEAD. This allows for better debugging in the browser and for automated unit testing.
+* There is no currently recommended unit testing framework for Javascript. **TODO** Choose a testing framework. (Note, see what Vuejs uses?)
+* Use a namespace object to hold functions and data which needs to be accessed by multiple php pages. This object can be loaded independent of the application and tested.
 
 ### 5.4 JavaScript code coverage
 
@@ -311,3 +316,6 @@ jMeter load tests are present in the `developers/load-testing/`.
 ## 11. User Acceptance Testing (UAT)
 
 It is up to each institution how it does its own UAT testing. 
+
+## 12. Refactoring for testability
+* **TODO** Guide to testable code
